@@ -8,10 +8,12 @@ on:
     branches:
       - master
       - release/5.0.x
+      - release/6.0.x
   pull_request:
     branches:
       - master
       - release/5.0.x
+      - release/6.0.x
 
 permissions: write-all
 
@@ -42,14 +44,14 @@ jobs:
         server-username: MAVEN_USERNAME
         server-password: MAVEN_PASSWORD
     - name: Build & Install
-      run: mvn --batch-mode -DskipITs install
+      run: mvn -B -V -DskipITs install
     - name: Verify IT
       run: mvn -DskipMinify=true --projects struts2-jquery-integration-tests -Dmaven.javadoc.skip=true -P ci-htmlunit verify
 #    - name: Verify IT with PhantomJS
 #      run: mvn -DskipMinify=true --projects struts2-jquery-integration-tests -Dmaven.javadoc.skip=true -P phantomjs verify
     - name: Deploy SNAPSHOT
-      if: github.ref == 'refs/heads/release/5.0.x'
+      if: github.ref == 'refs/heads/release/5.0.x' || github.ref == 'refs/heads/release/6.0.x'
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
-      run: mvn -B -V -DskipTests=true deploy --no-transfer-progress
+      run: mvn -B -V -DskipTests=true deploy
