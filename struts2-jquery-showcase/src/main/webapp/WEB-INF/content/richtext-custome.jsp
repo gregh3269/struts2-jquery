@@ -8,7 +8,7 @@
 	Also it loads the initial content via an AJAX request and the editor local is that to french.
 </p>
 <s:url var="remoteurl" action="ajax1"/>
-<s:set var="contextPath" value="#request.get('javax.servlet.forward.context_path')"/>
+<s:set var="contextPath" >${pageContext.request.contextPath}</s:set>
 <s:form id="formRichtextCustom" action="simpleecho" theme="xhtml">
 	<s:hidden name="escape" value="false"/>
 	<sjr:ckeditor
@@ -23,7 +23,7 @@
 			toolbar="MyToolbar"
 			skin="kama"
 			editorLocal="fr"
-			customConfig="%{contextPath}/js/ckeditor.config.js"
+			customConfig="%{#contextPath}/js/ckeditor.config.js"
 			/>
 	<sj:submit
 			targets="result"
@@ -51,7 +51,7 @@
 &lt;%@ taglib prefix=&quot;sjr&quot; uri=&quot;/struts-jquery-richtext-tags&quot;%&gt;
 
 &lt;s:url id=&quot;remoteurl&quot; action=&quot;ajax1&quot;/&gt;
-&lt;s:set id=&quot;contextPath&quot;  value=&quot;#request.get('javax.servlet.forward.context_path')&quot; /&gt;
+&lt;s:set var=&quot;contextPath&quot; >\${pageContext.request.contextPath}&lt;/s:set&gt
 &lt;s:form id=&quot;formRichtextCustom&quot; action=&quot;simpleecho&quot; theme=&quot;xhtml&quot;&gt;
 	&lt;s:hidden name=&quot;escape&quot; value=&quot;false&quot;/&gt;
 	&lt;sjr:ckeditor
@@ -66,7 +66,7 @@
 		toolbar=&quot;MyToolbar&quot;
 		skin=&quot;fr&quot;
 		editorLocal=&quot;v2&quot;
-		customConfig=&quot;%{contextPath}/js/ckeditor.config.js&quot;
+		customConfig=&quot;%{#contextPath}/js/ckeditor.config.js&quot;
 	/&gt;
 	&lt;sj:submit
 		targets=&quot;result&quot;

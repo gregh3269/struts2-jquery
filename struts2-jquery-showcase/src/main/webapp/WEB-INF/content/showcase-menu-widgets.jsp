@@ -158,7 +158,7 @@
 				<sj:menuItem id="richtextlink" href="%{urlrichtext}" targets="content" title="Richtext - Ckeditor" />
 
 				<s:url var="urlrichtextcustome" action="richtext-custome"/>
-				<sj:menuItem id="richtextcustomelink" href="%{urlrichtextcustome}" targets="content" title="Richtext - Ckeditor (Custome Toolbar)" />
+				<sj:menuItem id="richtextcustomelink" href="%{urlrichtextcustome}" targets="content" title="Richtext - Ckeditor (Custom Toolbar)" />
 
 				<s:url var="urlrichtexttinymce" action="richtext-tinymce"/>
 				<sj:menuItem id="richtexttinymcelink" href="%{urlrichtexttinymce}" targets="content" title="Richtext - Tinymce" />
