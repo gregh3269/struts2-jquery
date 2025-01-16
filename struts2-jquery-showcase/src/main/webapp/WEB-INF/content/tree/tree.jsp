@@ -122,7 +122,9 @@
 <p class="text">
 	A Tree with different node types.
 </p>
-<s:set var="contextPath" value="#request.get('javax.servlet.forward.context_path')"/>
+
+<s:set var="contextPath" >${pageContext.request.contextPath}</s:set>
+
 <sjt:tree
 		id="treeTypes"
 		jstreetheme="default"
@@ -131,15 +133,15 @@
             'root' : {
                 'max_children' : 1,
                 'max_depth' : 4,
-                'icon' : '%{contextPath}/images/root.png',
+                'icon' : '%{#contextPath}/images/root.png',
                 'valid_children' : [ 'folder', 'file' ]
             },
             'folder' : {
-                'icon' : '%{contextPath}/images/folder.png',
+                'icon' : '%{#contextPath}/images/folder.png',
                 'valid_children' : [ 'folder', 'file' ]
             },
             'file' : {
-                'icon' : '%{contextPath}/images/file.png',
+                'icon' : '%{#contextPath}/images/file.png',
                 'valid_children' : [ ]
             }
 		}">
@@ -325,7 +327,7 @@
 &lt;p class=&quot;text&quot;&gt;
 	A Tree with different node types.
 &lt;/p&gt;
-&lt;s:set id=&quot;contextPath&quot; value=&quot;#request.get('javax.servlet.forward.context_path')&quot;/&gt;
+&lt;s:set var=&quot;contextPath&quot; >\${pageContext.request.contextPath}&lt;/s:set&gt
 &lt;sjt:tree
 		id=&quot;treeTypes&quot;
 		jstreetheme=&quot;default&quot;
@@ -334,15 +336,15 @@
             'root' : {
                 'max_children' : 1,
                 'max_depth' : 4,
-                'icon' : '%{contextPath}/images/root.png',
+                'icon' : '%{#contextPath}/images/root.png',
                 'valid_children' : [ 'folder', 'file' ]
             },
             'folder' : {
-                'icon' : '%{contextPath}/images/folder.png',
+                'icon' : '%{#contextPath}/images/folder.png',
                 'valid_children' : [ 'folder', 'file' ]
             },
             'file' : {
-                'icon' : '%{contextPath}/images/file.png',
+                'icon' : '%{#contextPath}/images/file.png',
                 'valid_children' : [ ]
             }
 		}&quot;&gt;
